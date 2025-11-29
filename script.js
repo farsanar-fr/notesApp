@@ -109,10 +109,10 @@ function editNote(note) {
                 <button class="saveEdit btn"><i class="fa-solid fa-floppy-disk"></i></button>
                 <div class="editTitle container mt-2 fs-5" contenteditable="true">${titleText}</div>
                 <div class="editNotes container mt-2" contenteditable="true">${notesText}</div>
-                <i class="fa-solid fa-bold "></i>
-                <i class="fa-solid fa-italic ms-2"></i>
-                <i class="fa-solid fa-underline ms-2"></i>
-                <i class="fa-solid fa-strikethrough ms-2"></i>
+                <button class="fa-bold"><i class="fa-solid fa-bold "></i></button>
+<button class="fa-italic"><i class="fa-solid fa-italic ms-2"></i></button>
+<button class="fa-underline"><i class="fa-solid fa-underline ms-2"></i></button>
+<button class="fa-strikethrough"><i class="fa-solid fa-strikethrough ms-2"></i></button>
             `;
 
   const boldBtn = editNote.querySelector(".fa-bold");
