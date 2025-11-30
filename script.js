@@ -61,14 +61,15 @@ function attachNote(title, notes) {
 
  // note.innerHTML = `<h2>${title}</h2><p>${notes}</p>`;
     note.innerHTML = `
-        <div class="title">${title}</div>
-        <div class="notes">${notes}</div>
+        <div class="displayTitle">${title}</div>
+        <div class="displayNotes">${notes}</div>
     `;
-    let titleElem = note.querySelector(".title");
-  let notesElem = note.querySelector(".notes");
+    let titleElem = note.querySelector(".displayTitle");
+  let notesElem = note.querySelector(".displayNotes");
   let bgClr = `hsl(${Math.random() * 360},70%,80%)`;
   titleElem.style.backgroundColor=bgClr;
   notesElem.style.backgroundColor=bgClr;
+  note.style.backgroundColor=bgClr;
   document.body.appendChild(note);
 
   //editNote();
@@ -102,17 +103,18 @@ function editNote(note) {
   let editNote = document.createElement("div");
   editNote.classList.add("editNote", "show", "container");
 
-  let titleText = note.querySelector(".title").innerHTML;
-  let notesText = note.querySelector(".notes").innerHTML;
+  let titleText = note.querySelector(".displayTitle").innerHTML;
+  let notesText = note.querySelector(".displayNotes").innerHTML;
 
   editNote.innerHTML = `
-                <button class="saveEdit btn"><i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="saveEdit btn"><i class="fa-solid fa-floppy-disk fs-5"></i></button>
                 <div class="editTitle container mt-2 fs-5" contenteditable="true">${titleText}</div>
                 <div class="editNotes container mt-2" contenteditable="true">${notesText}</div>
-                <button class="fa-bold"><i class="fa-solid fa-bold "></i></button>
-<button class="fa-italic"><i class="fa-solid fa-italic ms-2"></i></button>
-<button class="fa-underline"><i class="fa-solid fa-underline ms-2"></i></button>
-<button class="fa-strikethrough"><i class="fa-solid fa-strikethrough ms-2"></i></button>
+               
+<div class="frmt"><button class="btn fa-bold"><i class="fa-solid fa-bold "></i></button>
+<button class="btn fa-italic"><i class="fa-solid fa-italic ms-2"></i></button>
+<button class="btn fa-underline"><i class="fa-solid fa-underline ms-2"></i></button>
+<button class="btn fa-strikethrough"><i class="fa-solid fa-strikethrough ms-2"></i></button></div>
             `;
 
   const boldBtn = editNote.querySelector(".fa-bold");
@@ -187,8 +189,8 @@ function updateNote(title, notes, note) {
   console.log(notes);
   console.log(note);
    note.innerHTML = `
-        <div class="title">${title}</div>
-        <div class="notes">${notes}</div>
+        <div class="displayTitle">${title}</div>
+        <div class="displayNotes">${notes}</div>
     `;
 }
 //  $('.note').click(function(el){
@@ -197,6 +199,6 @@ function updateNote(title, notes, note) {
 
 //         });
 function resetValues() {
-  document.querySelector(".title").value = "";
-  document.querySelector(".notes").value = "";
+  document.querySelector(".title").innerHTML = "Title";
+  document.querySelector(".notes").innerHTML = "Your notes here...";
 }
