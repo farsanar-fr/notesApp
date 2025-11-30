@@ -1,6 +1,21 @@
+document.querySelector('body').addEventListener('click',function(){
+console.log(document.querySelector('.note'));
+if(document.querySelector('.note')!=null)
+    {
+      console.log(document.querySelector('.note'));
+      
+document.querySelector('.help').classList.add("hide");
+    }  
+    else
+    {
+      document.querySelector('.help').classList.remove("hide");
+    }
+})
+
 //Add Note
 document.querySelector(".add").addEventListener("click", function () {
-    document.querySelector('.help').classList.add("hide");
+ 
+  
   document.querySelector(".newNote").classList.add("show");
   document.querySelector(".newNote").classList.remove("hide");
   document.querySelector(".overlay").classList.add("show");
@@ -108,6 +123,7 @@ function editNote(note) {
 
   editNote.innerHTML = `
                 <button class="saveEdit btn"><i class="fa-solid fa-floppy-disk fs-5"></i></button>
+                <button class="btn dlt"><i class="fa-solid fa-trash"></i></button>
                 <div class="editTitle container mt-2 fs-5" contenteditable="true">${titleText}</div>
                 <div class="editNotes container mt-2" contenteditable="true">${notesText}</div>
                
@@ -144,7 +160,25 @@ function editNote(note) {
     e.preventDefault(); // prevent button from taking focus
     document.execCommand("strikethrough"); // now works
   });
+editNote.querySelector(".dlt").addEventListener("click", function (e) {
+      let ask=prompt("Are you sure you want to delete this note? Type y/n to confirm.");
+      if(ask=="y"||ask=="Y"){
+        console.log(e.target);
+     note.remove();
+      // Hide this popup (not the first one)
+    editNote.classList.remove("show");
+    editNote.classList.add("hide");
 
+    // hide overlay
+    document.querySelector(".overlay").classList.add("hide");
+    document.querySelector(".overlay").classList.remove("show");
+     setTimeout(() => {
+      editNote.remove();
+      console.log("REMOVED");
+    }, 200);
+      }
+      
+    });
   document.body.appendChild(editNote);
 
   document.querySelector(".overlay").classList.add("show");
